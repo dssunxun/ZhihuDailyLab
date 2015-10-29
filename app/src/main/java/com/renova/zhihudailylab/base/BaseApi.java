@@ -30,7 +30,7 @@ public class BaseApi {
             return responseUrl;
         } else {
             Logger.e(new Exception(response.code() + ""), "Status error code :");
-            return response.code()+"";
+            return setServerResponseErrorMsg(response.code());
         }
     }
 
