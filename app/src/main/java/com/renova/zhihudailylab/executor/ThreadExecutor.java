@@ -38,7 +38,6 @@ public class ThreadExecutor {
     public void execute(Runnable runnable) {
         if (runnable != null) {
             threadPoolExecutor.execute(runnable);
-            threadPoolExecutor.getQueue();
         }
     }
 }

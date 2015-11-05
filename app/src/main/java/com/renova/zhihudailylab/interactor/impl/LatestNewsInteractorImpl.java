@@ -1,5 +1,7 @@
 package com.renova.zhihudailylab.interactor.impl;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.renova.zhihudailylab.api.GetLatestNewsApi;
 import com.renova.zhihudailylab.base.BaseApi;
@@ -13,9 +15,11 @@ import com.renova.zhihudailylab.interactor.listener.OnLatestNewsListener;
  * Created by Renova on 2015/10/29.
  */
 public class LatestNewsInteractorImpl implements LatestNewsInteractor {
+
     @Override
     public void getLatestNews(OnLatestNewsListener latestNewsListener) {
-        ThreadExecutor.getInstance().execute(new LatestNewsRunnable(latestNewsListener));
+        LatestNewsRunnable latestNewsRunnable = new LatestNewsRunnable(latestNewsListener);
+        ThreadExecutor.getInstance().execute(latestNewsRunnable);
     }
 
 
@@ -37,6 +41,7 @@ public class LatestNewsInteractorImpl implements LatestNewsInteractor {
             if (responseSuccessful) {
                 Gson gson = new Gson();
                 LatestNews latestNewsEntity = gson.fromJson(latestNews, LatestNews.class);
+                Log.d("MainActivity", "线程");
                 listener.setLatestNews(latestNewsEntity);
                 listener.onSuccess();
             }

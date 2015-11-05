@@ -1,11 +1,7 @@
 package com.renova.zhihudailylab.api;
 
-import android.text.TextUtils;
-
-import com.google.gson.Gson;
 import com.renova.zhihudailylab.Constants;
 import com.renova.zhihudailylab.base.BaseApi;
-import com.renova.zhihudailylab.entities.LatestNews;
 
 import java.io.IOException;
 
@@ -25,8 +21,5 @@ public class GetLatestNewsApi extends BaseApi {
             e.printStackTrace();
         }
         return news;
-
-
-
     }
 }

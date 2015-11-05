@@ -23,6 +23,10 @@ public class BaseApi {
         Response response = OkHttpUtils.getInstance()
                 .execute(request);
 
+        if (response==null) {
+            return "unknown";
+        }
+
         if (response.isSuccessful()) {
             String responseUrl = response.body()
                     .string();
@@ -36,18 +40,16 @@ public class BaseApi {
 
     public static String setServerResponseErrorMsg(int code) {
 
-        String errorMsg = "";
+        String errorMsg = "error";
         if (code < 500 && code >= 400) {
             errorMsg = "请求错误!";
-        }
-        if (code >= 500) {
+        } else if (code >= 500) {
             errorMsg = "服务器错误!";
         }
         return errorMsg;
     }
 
-    public static boolean isResponseSuccessful(String reponse)
-    {
-        return reponse.contains("{");
+    public static boolean isResponseSuccessful(String response) {
+        return response.contains("{");
     }
 }
