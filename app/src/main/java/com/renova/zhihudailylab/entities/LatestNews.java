@@ -176,9 +176,6 @@ public class LatestNews {
     }
 
 
-
-
-
     @Override
     public String toString() {
         return "LatestNews{" +
